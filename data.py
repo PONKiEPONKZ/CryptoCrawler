@@ -26,9 +26,20 @@ def collect_and_process_data():
         logger.error(f'Error retrieving data from Coingecko API: {str(e)}')
         return None
 
-
-# TODO Rename this here and in `collect_and_process_data`
 def _extracted_from_collect_and_process_data_14(api_url, params):
+    """
+    Fetches data from a Coingecko API and processes it into a Pandas DataFrame.
+
+    Args:
+        api_url (str): The URL of the Coingecko API.
+        params (dict): Parameters to be included in the API request.
+
+    Returns:
+        pandas.DataFrame: Processed data in the form of a DataFrame.
+
+    Raises:
+        requests.exceptions.HTTPError: If the API request fails.
+    """
     logger.info('Sending request to Coingecko API')
     response = requests.get(api_url, params=params)
     response.raise_for_status()
